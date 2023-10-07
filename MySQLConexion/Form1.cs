@@ -12,6 +12,7 @@ namespace MySQLConexion
 
         private void btnConectar_Click(object sender, EventArgs e)
         {
+            // Se obtienen los datos de los textBox
             string host = txtHost.Text;
             string user = txtUsuario.Text;
             string password = txtContrasena.Text;
@@ -20,6 +21,7 @@ namespace MySQLConexion
 
             string connectionString = BuildConnectionString(host, user, password, puerto, database);
 
+            // Se establece la conexion con la base de datos
             using (MySqlConnection con = new MySqlConnection(connectionString))
             {
                 try
@@ -37,6 +39,7 @@ namespace MySQLConexion
             }
         }
 
+        // Retorna la cadena de conexión es para establecer la comunicación con la base de datos
         private string BuildConnectionString(string host, string user, string password, string port, string database)
         {
             return $"SERVER={host};PORT={port};DATABASE={database};USER ID={user};PASSWORD={password};";
